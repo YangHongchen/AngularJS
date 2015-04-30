@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title>第7章 过滤器</title>
+    <!-- imoport bootstrap css -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- imoport angular framework -->
+    <script src="../js/angular-1.0.1.min.js"></script>
+    <!-- imoport common Javascript functions -->
+    <script src="../js/functions.js"></script>
+    <!-- CSS -->
+    <style type="text/css">
+    .time {
+        font-family: microsoft yahei;
+        font-size: 16px;
+        color: #666;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="alert alert-info">
+            <h3>过滤器</h3>用来格式化需要展示给用户的数据。 AngularJS有很多实用的内置过滤器，同时也提 供了方便的途径可以自己创建过滤器。
+            <div class="alert alert-danger">
+                <pre>
+var app = angular.module("app",[]);
+app.controller('DemoController', ['$scope', '$filter',
+    function($scope, $filter) {
+        $scope.name = $filter('lowercase')("YCASE");
+    }
+]);	
+            	</pre><br>
+                <div ng-controller="DemoController">
+                   测试程序原值：{{name}}  <br> 过滤器返回值： {{name | currency : '€'}}<br><br><br>
+                   
+                </div>
+
+                <div class="alert alert-warning">
+                	【内置过滤器】：
+                	<br>lowercase(转小写) <br> 
+                	uppercase(转大写) <br> 
+                	number:2（精确到小数点后两位）<br>
+                	currency 
+					
+					<div class="alert alert-info">
+                		<h3>currency</h3>
+                		<div class="alert-alert-warnint">
+                			(将数字转换成货币格式，默认是美元 [currency]直接使用, 它也允许我们自己设置货币符号：<b>currency : '€'</b> 设置为欧元)
+                		</div>
+                	</div>
+
+                	<div class="alert alert-info">
+                		<h3>date</h3>
+                		<div class="alert-alert-warnint">
+                			date过滤器可以将日期格式化成需要的格式。 AngularJS中内置了几种日期格式，如果没有
+指定使用任何格式，默认会采用mediumDate格式<br>
+详细用法参考官方文档;
+
+                		</div>
+                	</div>
+
+                	<div class="alert alert-info">
+                		<h3>filter</h3>
+                		<div class="alert-alert-warnint">
+                		filter过滤器可以从给定数组中选择一个子集，并将其生成一个新数组返回。这个过滤器通
+						常用来过滤需要进行展示的元素。例如，在做客户端搜索时，可以从一个数组中立刻过滤出所需
+						的结果。<br>这个过滤器的第一个参数可以是字符串、对象或是一个用来从数组中选择元素的函数。
+						
+                		</div>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+var app = angular.module("app", []);
+// 在程序中强制引用过滤器的写法
+// app.controller('DemoController', ['$scope', '$filter',
+//     function($scope, $filter) {
+//         $scope.name = $filter('lowercase')("AbcDeFG");
+//     }
+// ]);
+
+app.controller("DemoController",function($scope){
+	$scope.name = 6888.99;
+});
+</script>
+
+</html>

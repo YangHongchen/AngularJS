@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title>第5章 控制器-ng-click</title>
+    <!-- imoport bootstrap css -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- imoport angular framework -->
+    <script src="../js/angular-1.0.1.min.js"></script>
+    <!-- imoport common Javascript functions -->
+    <script src="../js/functions.js"></script>
+    <!-- CSS -->
+    <style type="text/css">
+    .time {
+        font-family: microsoft yahei;
+        font-size: 16px;
+        color: #666;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="alert alert-info">
+            用内置指令 <big>ng-click</big> 可以将按钮、链接等其他任何DOM元素同 <b>点击事件</b> 进行绑定。
+            <br> ng-click指 令将浏览器中的mouseup事件，同设置在DOM元素上的事件处理程序绑定在一起（例如，当浏览器 在某个DOM元素上触发了点击事件，函数就会被调用）。<br><br>
+            AngularJS同其他JavaScript框架最主要的一个区别就是， <b>控制器</b> 并不适合用来执行DOM操
+作、格式化或数据操作，以及除存储数据模型之外的状态维护操作。它只是视图和$scope之间的
+桥梁。
+        </div>
+        <div ng-controller="FirstController">
+            <h2>简单的事件绑定小程序：</h2>
+            <button ng-click="add(1)" class="btn btn-primary">递增 ↑</button>　　　
+            <button ng-click="subtract(1)" class="btn btn-primary">递减 ↓</button>
+            <h4>当前参数值(counter): {{ counter }}</h4>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+var app = angular.module("app", []);
+app.controller('FirstController', function($scope) {
+    $scope.counter = 0;
+    $scope.add = function(amount) {
+        $scope.counter += amount;
+    };
+    $scope.subtract = function(amount) {
+        $scope.counter -= amount;
+    };
+});
+</script>
+
+</html>

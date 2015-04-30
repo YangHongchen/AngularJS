@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app>
+
+<head>
+    <meta charset="UTF-8">
+    <title>模 块</title>
+    <!-- imoport bootstrap css -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../js/angular-1.0.1.min.js"></script>
+    <script src="../js/functions.js"></script>
+    <style type="text/css">
+    .time {
+        font-family: microsoft yahei;
+        font-size: 16px;
+        color: #666;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="alert alert-info">
+            在JavaScript中，将函数代码全部都定义在全局命名空间中绝对不是什么好主意，这样做会导 致冲突从而使调试变得非常困难，浪费宝贵的开发时间。
+            <br>
+            <br> 在AngularJS中，模块是定义应用的最主要方式。模块包含了主要的应用代码。一个应用可 以包含多个模块，每一个模块都包含了定义具体功能的代码。
+            <br>
+            <br>
+            <pre>
+使用模块能给我们带来许多好处，比如：<br>
+ 保持全局命名空间的清洁；<br>
+ 编写测试代码更容易，并能保持其清洁，以便更容易找到互相隔离的功能；<br>
+ 易于在不同应用间复用代码；<br>
+ 使应用能够以任意顺序加载代码的各个部分。<br></pre> AngularJS允许我们使用angular.module() 方法来声明模块，这个方法能够接受两 一个是模块的名称，第二个是依赖列表，也就是可以被注入到模块中的对象列表。
+        </div>
+        <div class="time" ng-controller="MyController">
+            <h1>angular.module('myApp', []); </h1>
+            <h3>声明模块，相当于setter方法</h3>
+            <div class="alert alert-warning">
+                第一个是模块的名称(name)，第二个是依赖列表(requires)，也就是可以被注入到模块中的对象列表。
+            </div>
+            <h1>angular.module('myApp'); </h1>
+            <h3>  获取模块，相当于getter方法</h3>
+			<div class="alert alert-warning">
+            调用这个方法时如果只传递一个参数，就可以用它来引用模块。<br>例如，可以通过以下代码来
+			引用myApp模块：<br>
+			// 这个方法用于获取应用<br>
+			angular.module('myApp')<br>
+			接下来，就可以在angular.module('myApp') 返回的对象上创建我们的应用了。
+			</div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+function MyController($scope) {
+    // 定义变量：
+    // 注意这里面的数据格式不能带分号，否则会报错！
+    $scope.date = {
+        now: zh_now()
+    }
+    var updateTime = function() {
+            $scope.date.now = zh_now();
+        }
+        // 每秒执行更新时间操作
+    setInterval(function() {
+        // $apply：后续章节我们详细了解其用法
+        $scope.$apply(updateTime);
+    }, 1000);
+    // 首次调用，触发事件更新事件
+    updateTime();
+}
+</script>
+
+</html>

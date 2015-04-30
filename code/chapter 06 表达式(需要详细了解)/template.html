@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>第6章 表达式</title>
+    <!-- imoport bootstrap css -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- imoport angular framework -->
+    <script src="../js/angular-1.0.1.min.js"></script>
+    <!-- imoport common Javascript functions -->
+    <script src="../js/functions.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="alert alert-info">
+            <pre>
+表达式和eval(javascript) 非常相似，但是由于表达式由 AngularJS来处理，它们有以下显
+著不同的特性：
+ 所有的表达式都在其所属的作用域内部执行，并有访问本地$scope的权限；
+ 如果表达式发生了TypeError和ReferenceError并不会抛出异常；
+ 不允许使用任何流程控制功能（条件控制，例如if/eles）；
+ 可以接受过滤器和过滤器链。
+对表达式进行的任何操作，都会在其所属的作用域内部执行，因此可以在表达式内部调用那
+些限制在此作用域内的变量，并进行循环、函数调用、将变量应用到数学表达式中等操作。</pre>
+        </div>
+        <div class="alert alert-info">
+            <h2>解析 AngularJS 表达式</h2>
+            <div ng-controller="MyController">
+                <input ng-model="expr" type="text" placeholder="Enter an expression" />
+                <h2>{{ parseValue }}</h2>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+angular.module("myApp", [])
+    .controller('MyController',
+        function($scope, $parse) {
+            $scope.$watch('expr', function(newVal, oldVal, scope) {
+                if (newVal !== oldVal) {
+                    // 用该表达式设置parseFun
+                    var parseFun = $parse(newVal);
+                    // 获取经过解析后表达式的值
+                    $scope.parsedValue = parseFun(scope);
+                }
+            });
+        });
+</script>
+
+</html>

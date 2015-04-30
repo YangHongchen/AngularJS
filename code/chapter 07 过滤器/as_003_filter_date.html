@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title>第7章 过滤器：date 使用详解</title>
+    <!-- imoport bootstrap css -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- imoport angular framework -->
+    <script src="../js/angular-1.0.1.min.js"></script>
+    <!-- imoport common Javascript functions -->
+    <script src="../js/functions.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row" ng-controller="MyController">
+            <div class="alert ">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>日期过滤器</th>
+                        <th>效果</th>
+                        <th>说明</th>
+                    </tr>
+                    <tr>
+                        <td>date:'medium' </td>
+                        <td>{{ name | date:'medium' }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>date:'short'</td>
+                        <td>{{ name | date:'short' }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>date:'fullDate'</td>
+                        <td>{{ name | date:'fullDate' }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>date:'longDate'</td>
+                        <td>{{ name | date:'longDate' }} </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>date:'mediumDate'</td>
+                        <td>{{ name | date:'mediumDate' }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>date:'shortDate'</td>
+                        <td>{{ name | date:'shortDate' }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>date:'mediumTime'</td>
+                        <td>{{ name | date:'mediumTime' }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> date:'shortTime'</td>
+                        <td>{{ name | date:'shortTime' }}</td>
+                        <td></td>
+                    </tr>
+                    <tr class="active">
+                        <td colspan="3"><big>年份格式化</big></td>
+                    </tr>
+                    <tr>
+                        <td> date:'yyyy' (四位年份)</td>
+                        <td>{{ name | date:'yyyy' }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> date:'yy' (二位年份)</td>
+                        <td>{{ name | date:'yy' }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> date:'y' (一位年份)</td>
+                        <td>{{ name | date:'y' }}</td>
+                        <td></td>
+                    </tr>
+                    <tr class="active">
+                        <td colspan="3"><big>月份格式化</big></td>
+                    </tr>
+                    <tr>
+                        <td> date:'MMMM' (英文月份)</td>
+                        <td>{{ name | date:'MMMM'}}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> date:'MMM' (英文月份简写：)</td>
+                        <td>{{ name | date:'MMM'}}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> date:'MM' (数字月份：)</td>
+                        <td>{{ name | date:'MM'}}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> date:'M' (一年中的第几个月份：)</td>
+                        <td>{{ name | date:'M'}}</td>
+                        <td></td>
+                    </tr>
+                    <tr class="active">
+                        <td colspan="3"><big>日期格式化</big></td>
+                    </tr>
+                    <tr>
+                        <td> date:'dd' (数字日期：)</td>
+                        <td>{{ name | date:'dd' }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> date:'d' (一个月中的第几天：)</td>
+                        <td>{{ name | date:'d' }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> date:'EEEE' (英文星期：)</td>
+                        <td>{{ name | date:'EEEE' }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> date:'EEE' (英文星期简写：)</td>
+                        <td>{{ name | date:'EEE' }}</td>
+                        <td></td>
+                    </tr>
+                    <tr class="active">
+                        <td colspan="3"><big>小时格式化</big></td>
+                    </tr>
+                    <tr>
+                        <td> date:'HH' (24小时制数字小时：)</td>
+                        <td>{{ name | date:'HH' }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> date:'H' (一天中的第几个小时：)</td>
+                        <td>{{ name | date:'H' }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> date:'hh' (12小时制数字小时：)</td>
+                        <td>{{ name | date:'hh' }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> date:'h' (上午或下午的第几个小时：)</td>
+                        <td>{{ name | date:'h' }}</td>
+                        <td></td>
+                    </tr>
+                    <tr class="active">
+                        <td colspan="3"><big>分钟格式化</big></td>
+                    </tr>
+                    <tr>
+                        <td> date:'mm' (数字分钟数：)</td>
+                        <td>{{ name | date:'mm' }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> date:'m' (一个小时中的第几分钟：)</td>
+                        <td>{{ name | date:'m' }}</td>
+                        <td></td>
+                    </tr>
+                    <tr class="active">
+                        <td colspan="3"><big>秒钟格式化</big></td>
+                    </tr>
+                    <tr>
+                        <td> date:'ss' (数字秒数：)</td>
+                        <td>{{ name |  date:'ss' }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> date:'s' (一分钟内的第几秒：)</td>
+                        <td>{{ name |  date:'s' }}</td>
+                        <td></td>
+                    </tr>
+                     
+                     <tr class="active">
+                        <td colspan="3"><big>字符格式化</big></td>
+                    </tr>
+                    <tr>
+                        <td> date:'a' (上下午标识：)</td>
+                        <td>{{ name | date:'a' }} </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> date:'Z' (四位时区标识：)</td>
+                        <td>{{ name | date:'Z' }} </td>
+                        <td></td>
+                    </tr>
+                     <tr class="active">
+                        <td colspan="3"><big>下面是一些自定义日期格式的示例：</big></td>
+                    </tr>
+					<tr>
+                        <td> date:'MMMd, y')</td>
+                        <td>{{ name | date:'MMMd, y' }}  </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>date:'EEEE, d, M'</td>
+                        <td>{{ name | date:'MMMd, y' }}  </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>date:'hh:mm:ss.sss'</td>
+                        <td>{{ name | date:'hh:mm:ss.sss' }}  </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+var app = angular.module("app", []);
+app.controller("MyController", function($scope) {
+    $scope.name = "203504229222";
+});
+</script>
+
+</html>

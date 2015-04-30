@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>第5章 控制器-复杂的scope数据类型</title>
+    <!-- imoport bootstrap css -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- imoport angular framework -->
+    <script src="../js/angular-1.0.1.min.js"></script>
+    <!-- imoport common Javascript functions -->
+    <script src="../js/functions.js"></script>
+    <!-- CSS -->
+    <style type="text/css">
+    .time {
+        font-family: microsoft yahei;
+        font-size: 16px;
+        color: #666;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="alert alert-info">
+            AngularJS允许在$scope上设置包括对象在内的任何类型的数据，并且在视图中还可以展示 对象的属性。 <br>例如，我们在MyController上创建一个person对象，这个对象只有name这一个属性：
+            <pre>
+var myApp = angular.module("myApp", []);
+myApp.controller("MyController", function($scope) {
+    // scope中是可以定义很复杂的数据类型的
+    $scope.person = {
+        name: "yangc",
+        age: 26,
+        gender: "male",
+        home: "Hubei"
+    }
+});</pre>
+    </div>
+    <div ng-controller="MyController">
+        <pre>
+person:{{person}}</pre>
+    </div>
+    </div>
+   
+</body>
+<script type="text/javascript">
+var myApp = angular.module("myApp", []);
+myApp.controller("MyController", function($scope) {
+    // scope中是可以定义很复杂的数据类型的
+    $scope.person = {
+        name: "yangc",
+        age: 26,
+        gender: "male",
+        home: "Hubei"
+    }
+});
+</script>
+
+</html>

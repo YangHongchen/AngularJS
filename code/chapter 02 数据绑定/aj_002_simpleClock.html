@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Clock</title>
+    <!-- imoport bootstrap css -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../js/angular-1.0.1.min.js"></script>
+    <script src="../js/functions.js"></script>
+</head>
+
+<body>
+    <!-- ng-controller声明所有被它包含的元素都属于某个控制器 -->
+    <div ng-controller="MyController">
+        <h1>{{ clock }}</h1>
+    </div>
+</body>
+<script type="text/javascript">
+/**
+* scope 数据模型
+  timeout 定时器
+*/
+function MyController($scope, $timeout) {
+    var updateClock = function() {
+        $scope.clock = zh_now();
+        $timeout(function() {
+            updateClock();
+        }, 1000);
+    };
+    updateClock();
+};
+</script>
+
+</html>
